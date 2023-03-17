@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .alert {
+          padding: 15px;
+          border: 1px solid #d6e9c6;
+          border-radius: 4px;
+          color: #3c763d;
+          background-color: #dff0d8;
+        }
+        </style>
+</head>
+<body>
+    
+  <div id="container"></div>
+
+  <script>
+    let data = {
+      "Рыбы": {
+        "форель": {},
+        "лосось": {}
+      },
+
+      "Деревья": {
+        "Огромные": {
+          "секвойя": {},
+          "дуб": {}
+        },
+        "Цветковые": {
+          "яблоня": {},
+          "магнолия": {}
+        }
+      }
+    };
+
+    function createTree(container, obj) {
+      container.innerHTML = createTreeText(obj);
+    }
+
+    function createTreeText(obj) { // отдельная рекурсивная функция
+      let li = '';
+      let ul;
+      console.log('obj: ' + JSON.stringify(obj));
+      for (let key in obj) {
+        console.log('Ключ:' + key);
+        li += '<li>' + key + createTreeText(obj[key]) + '</li>';
+      }
+      console.log('Значение li: ' +li)
+      if (li) {
+        ul = '<ul>' + li + '</ul>'
+      }
+      return ul || '';
+    }
+
+    createTree(container, data);
+  </script>
+</body>
+</html>

@@ -10,7 +10,7 @@ work(1, 2);
 work(4, 5);
   
 for (let args of work.calls) {
-    console.log( 'call:' + args.join() );
+    console.log( 'Вызов:' + args.join() );
 }
 
 function spy(func) {
